@@ -9,7 +9,7 @@ The game is also available as a Progressive Web App (PWA), allowing it to be ins
 ---
 
 ## 🎥 Game Demo
-[](https://github.com/BharateshLabhagond/Mr.Nags-Game/blob/main/video.mp4)
+[Demo video](video.mp4)
 
 ## 🎮 Features
 
