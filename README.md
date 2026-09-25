@@ -8,6 +8,8 @@ The game is also available as a Progressive Web App (PWA), allowing it to be ins
 
 ---
 
+## 🎥 Game Demo
+video.mp4
 
 ## 🎮 Features
 
