@@ -164,13 +164,11 @@ The interface includes:
 
 ### Desktop / Laptop
 
-![MR.Nagesha Desktop](![Uploading Screenshot 2026-09-25 202214.png…]()
-)
+![MR.Nagesha Desktop]()
 
 ### Mobile
 
-![MR.Nagesha Mobile](<img width="653" height="1280" alt="photo_2026-09-25_20-16-36" src="https://github.com/user-attachments/assets/4f2d33be-a200-4bce-aa6e-2081ea23fe30" />
-)
+![MR.Nagesha Mobile]()
 
 ---
 
