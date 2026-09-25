@@ -164,11 +164,11 @@ The interface includes:
 
 ### Desktop / Laptop
 
-![MR.Nagesha Desktop]()
+![MR.Nagesha Desktop](Desktop.png)
 
 ### Mobile
 
-![MR.Nagesha Mobile]()
+![MR.Nagesha Mobile](mobile.jpg)
 
 ---
 
