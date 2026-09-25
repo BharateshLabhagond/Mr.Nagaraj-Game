@@ -9,7 +9,9 @@ The game is also available as a Progressive Web App (PWA), allowing it to be ins
 ---
 
 ## 🎥 Game Demo
-[Demo video](video.mp4)
+https://github.com/user-attachments/assets/e8cd43f8-c6e4-4953-a239-fef6ef35427e
+
+
 
 ## 🎮 Features
 
