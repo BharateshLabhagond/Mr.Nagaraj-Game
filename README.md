@@ -8,8 +8,6 @@ The game is also available as a Progressive Web App (PWA), allowing it to be ins
 
 ---
 
-<img width="653" height="1280" alt="photo_2026-09-25_20-16-36" src="https://github.com/user-attachments/assets/0d764524-c1a7-42fe-8c14-9f445e17168e" />
-
 
 ## 🎮 Features
 
@@ -166,11 +164,13 @@ The interface includes:
 
 ### Desktop / Laptop
 
-![MR.Nagesha Desktop](desktop-preview.png)
+![MR.Nagesha Desktop](![Uploading Screenshot 2026-09-25 202214.png…]()
+)
 
 ### Mobile
 
-![MR.Nagesha Mobile](mobile-preview.png)
+![MR.Nagesha Mobile](<img width="653" height="1280" alt="photo_2026-09-25_20-16-36" src="https://github.com/user-attachments/assets/4f2d33be-a200-4bce-aa6e-2081ea23fe30" />
+)
 
 ---
 
