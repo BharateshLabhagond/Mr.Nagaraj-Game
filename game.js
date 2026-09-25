@@ -14,6 +14,42 @@ const canvas =
 const ctx =
     canvas.getContext("2d");
 
+/* =========================================================
+   MR.NAGESHA GLOBAL COUNTER
+========================================================= */
+
+const COUNTER_API =
+    "https://script.google.com/macros/s/AKfycbzUSyZKxgPRjN5MJcTS9Bt0QpxtGsb-eo9FmgxG-Qf0O_p9i2ygb8-65WsnN3crlpX9Xw/exec";
+
+
+function recordGameStart() {
+
+    fetch(
+        COUNTER_API + "?event=game_start",
+        {
+            method: "GET",
+            mode: "no-cors"
+        }
+    ).catch(() => {
+        // Ignore counter errors.
+    });
+
+}
+
+
+function recordShare() {
+
+    fetch(
+        COUNTER_API + "?event=share",
+        {
+            method: "GET",
+            mode: "no-cors"
+        }
+    ).catch(() => {
+        // Ignore counter errors.
+    });
+
+}
 
 const WIDTH =
     canvas.width;
@@ -526,6 +562,8 @@ function initializeGame() {
 
 function startGame() {
 
+    recordGameStart();
+   
     stopAnimation();
 
     stopBigFoodTimer();
@@ -2737,6 +2775,7 @@ if (shareButton) {
         "click",
         async () => {
 
+           recordShare();
             const currentHighScore =
                 formatScore(highScore);
 
