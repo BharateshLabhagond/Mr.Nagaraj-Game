@@ -19,7 +19,7 @@ const ctx =
 ========================================================= */
 
 const COUNTER_API =
-    "https://script.google.com/macros/s/AKfycbzUSyZKxgPRjN5MJcTS9Bt0QpxtGsb-eo9FmgxG-Qf0O_p9i2ygb8-65WsnN3crlpX9Xw/exec";
+    "https://script.google.com/macros/s/AKfycbzM70eT0BS59E9rbAu8nm1SpkI8tzSF8K_oij__LDhQTZDqO_1eLPDFN_mN7pn6My2wWQ/exec";
 
 
 function recordGameStart() {
