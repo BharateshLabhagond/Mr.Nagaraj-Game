@@ -1,0 +1,1480 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+
+    min-height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #454545 0%,
+            #1d1d1d 55%,
+            #050505 100%
+        );
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    padding: 20px;
+}
+
+
+/* =====================================================
+   PHONE
+===================================================== */
+
+.phone {
+
+    width: 500px;
+
+    padding: 25px;
+
+    border-radius: 45px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #eeeeee,
+            #a0a0a0 35%,
+            #d9d9d9 65%,
+            #777777
+        );
+
+    border: 5px solid #555;
+
+    box-shadow:
+
+        0 30px 60px
+        rgba(0, 0, 0, 0.75),
+
+        inset 0 0 20px
+        rgba(255, 255, 255, 0.8);
+}
+
+
+/* =====================================================
+   BRAND
+===================================================== */
+
+.phone-brand {
+
+    text-align: center;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 25px;
+
+    font-weight: 900;
+
+    letter-spacing: 3px;
+
+    color: #161616;
+
+    margin-bottom: 20px;
+
+    text-shadow:
+        1px 1px 0 #aaa;
+}
+
+
+/* =====================================================
+   LCD FRAME
+===================================================== */
+
+.lcd-frame {
+
+    padding: 12px;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #666,
+            #bdbdbd,
+            #555
+        );
+
+    box-shadow:
+        inset 0 0 12px #333;
+}
+
+
+/* =====================================================
+   LCD
+===================================================== */
+
+.lcd-screen {
+
+    position: relative;
+
+    overflow: hidden;
+
+    border-radius: 16px;
+
+    background: #b7b51c;
+
+    border: 8px solid #8d8a0e;
+
+    box-shadow:
+
+        inset 0 0 18px
+        rgba(60, 55, 0, 0.55),
+
+        0 2px 5px #333;
+}
+
+
+/* =====================================================
+   HUD
+===================================================== */
+
+.hud {
+
+    height: 43px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 5px 12px;
+
+    border-bottom: 2px solid #514f0b;
+
+    color: #3a3907;
+}
+
+
+.score {
+
+    font-size: 28px;
+
+    letter-spacing: 1px;
+}
+
+
+.level {
+
+    font-size: 13px;
+
+    font-weight: bold;
+}
+
+
+/* =====================================================
+   CANVAS
+===================================================== */
+
+#gameCanvas {
+
+    display: block;
+
+    width: 100%;
+
+    height: auto;
+
+    background: #b8b51d;
+
+    touch-action: none;
+}
+
+
+/* =====================================================
+   BOTTOM LCD
+===================================================== */
+
+.lcd-bottom {
+
+    height: 40px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 5px 8px;
+
+    border-top: 2px solid #514f0b;
+
+    color: #3a3907;
+}
+
+
+.food-counter {
+
+    min-width: 35px;
+
+    font-size: 12px;
+
+    font-weight: bold;
+}
+
+
+.timer-container {
+
+    flex: 1;
+
+    height: 12px;
+
+    border: 2px solid #4a4908;
+
+    overflow: hidden;
+
+    background:
+        rgba(50, 50, 0, 0.12);
+}
+
+
+.timer-bar {
+
+    width: 0%;
+
+    height: 100%;
+
+    background:
+        repeating-linear-gradient(
+            90deg,
+            #3a3907 0px,
+            #3a3907 4px,
+            transparent 4px,
+            transparent 6px
+        );
+
+    transition:
+        width 0.05s linear;
+}
+
+
+.timer-text {
+
+    width: 30px;
+
+    text-align: right;
+
+    font-size: 11px;
+
+    font-weight: bold;
+}
+
+
+/* =====================================================
+   GENERAL SCREEN OVERLAY
+===================================================== */
+
+.screen-overlay {
+
+    position: absolute;
+
+    inset: 43px 0 40px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    background:
+        rgba(183, 181, 28, 0.95);
+
+    color: #373606;
+
+    z-index: 20;
+}
+
+
+.hidden {
+
+    display: none !important;
+}
+
+
+.retro-title {
+
+    font-size: 38px;
+
+    font-weight: 900;
+
+    letter-spacing: 4px;
+
+    margin-bottom: 8px;
+}
+
+
+.retro-subtitle {
+
+    font-size: 20px;
+
+    letter-spacing: 5px;
+
+    margin-bottom: 28px;
+}
+
+
+.start-hint,
+.pause-hint,
+.restart-hint {
+
+    font-size: 11px;
+
+    letter-spacing: 1px;
+
+    margin-top: 10px;
+}
+
+
+.game-result {
+
+    font-size: 17px;
+
+    margin: 4px;
+}
+
+
+/* =====================================================
+   LCD BUTTON
+===================================================== */
+
+.lcd-button {
+
+    margin-top: 20px;
+
+    border: 2px solid #393806;
+
+    background: #a4a217;
+
+    color: #393806;
+
+    padding: 9px 25px;
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size: 15px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+
+.lcd-button:active {
+
+    transform:
+        translateY(2px);
+}
+
+
+/* =====================================================
+   COUNTDOWN
+===================================================== */
+
+.countdown-screen {
+
+    position: absolute;
+
+    inset: 43px 0 40px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    background:
+        rgba(183, 181, 28, 0.70);
+
+    z-index: 30;
+
+    pointer-events: none;
+}
+
+
+.countdown-screen.hidden {
+
+    display: none;
+}
+
+
+#countdownNumber {
+
+    font-size: 75px;
+
+    font-weight: 900;
+
+    color: #373606;
+
+    text-shadow:
+        2px 2px 0 #8d8a0e;
+
+    animation:
+        countdownPulse 0.9s ease-in-out;
+}
+
+
+@keyframes countdownPulse {
+
+    0% {
+
+        transform: scale(1.4);
+
+        opacity: 0;
+
+    }
+
+    30% {
+
+        transform: scale(1);
+
+        opacity: 1;
+
+    }
+
+    80% {
+
+        transform: scale(1);
+
+        opacity: 1;
+
+    }
+
+    100% {
+
+        transform: scale(0.85);
+
+        opacity: 0;
+
+    }
+
+}
+
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
+/* =====================================================
+   PHYSICAL CONTROLS
+===================================================== */
+
+.physical-controls {
+    width: 100%;
+    margin-top: 20px;
+}
+
+
+/* =====================================================
+   TOP START / MUTE BUTTONS
+===================================================== */
+
+.top-controls {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+
+.physical-button {
+    width: 148px;
+    height: 58px;
+
+    border-radius: 12px;
+
+    border: 2px solid #cbd2da;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #d6dde5
+        );
+
+    color: #26384c;
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size: 20px;
+    font-weight: 900;
+
+    letter-spacing: 2px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 5px 0 #8d98a5,
+        0 7px 12px rgba(0, 0, 0, 0.20);
+
+    touch-action: manipulation;
+    user-select: none;
+
+    -webkit-tap-highlight-color: transparent;
+
+    transition:
+        transform 0.055s ease,
+        box-shadow 0.055s ease;
+}
+
+
+.physical-button:active,
+.physical-button.button-pressed {
+
+    transform:
+        translateY(4px);
+
+    box-shadow:
+        0 1px 0 #8d98a5,
+        0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+
+/* =====================================================
+   D-PAD OUTER BODY
+===================================================== */
+
+.dpad-container {
+
+    position: relative;
+
+    width: 280px;
+    height: 248px;
+
+    margin: 0 auto;
+
+    border-radius: 42px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #8090a5,
+            #718096
+        );
+
+    border: 2px solid #69798e;
+
+    box-shadow:
+
+        inset 0 2px 4px
+        rgba(255, 255, 255, 0.25),
+
+        inset 0 -4px 8px
+        rgba(0, 0, 0, 0.15),
+
+        0 5px 0 #596779,
+
+        0 8px 15px
+        rgba(0, 0, 0, 0.20);
+}
+
+
+/* =====================================================
+   D-PAD BUTTONS
+===================================================== */
+
+.dpad-container .nav-button {
+
+    position: absolute;
+
+    width: 78px;
+    height: 66px;
+
+    border-radius: 11px;
+
+    border: 2px solid #d3d9e0;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #d8dee5
+        );
+
+    color: #182c43;
+
+    font-size: 19px;
+    font-weight: 900;
+
+    cursor: pointer;
+
+    box-shadow:
+
+        0 4px 0 #a0a8b2,
+
+        0 7px 10px
+        rgba(0, 0, 0, 0.18);
+
+    touch-action: manipulation;
+    user-select: none;
+
+    -webkit-tap-highlight-color: transparent;
+
+    transition:
+        transform 0.055s ease,
+        box-shadow 0.055s ease;
+}
+
+
+/* UP */
+
+.dpad-up {
+    top: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+
+/* LEFT */
+
+.dpad-left {
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+
+/* RIGHT */
+
+.dpad-right {
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+
+/* DOWN */
+
+.dpad-down {
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+
+/* =====================================================
+   D-PAD PRESS ANIMATION
+===================================================== */
+
+.dpad-container .nav-button:active,
+.dpad-container .nav-button.button-pressed {
+
+    transform:
+        translateY(3px)
+        scale(0.97);
+
+    box-shadow:
+
+        0 0 0 #a0a8b2,
+
+        0 2px 3px
+        rgba(0, 0, 0, 0.15);
+}
+
+
+/*
+   Keep the directional position while pressed.
+*/
+
+.dpad-up:active,
+.dpad-up.button-pressed {
+    transform:
+        translateX(-50%)
+        translateY(3px)
+        scale(0.97) !important;
+}
+
+
+.dpad-left:active,
+.dpad-left.button-pressed {
+    transform:
+        translateY(-50%)
+        translateX(3px)
+        scale(0.97) !important;
+}
+
+
+.dpad-right:active,
+.dpad-right.button-pressed {
+    transform:
+        translateY(-50%)
+        translateX(3px)
+        scale(0.97) !important;
+}
+
+
+.dpad-down:active,
+.dpad-down.button-pressed {
+    transform:
+        translateX(-50%)
+        translateY(3px)
+        scale(0.97) !important;
+}
+
+
+/* =====================================================
+   BLUE OK BUTTON
+===================================================== */
+
+.ok-button {
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    transform:
+        translate(-50%, -50%);
+
+    width: 76px;
+    height: 76px;
+
+    border-radius: 50%;
+
+    border: 2px solid #174fc0;
+
+    background:
+        linear-gradient(
+            145deg,
+            #3678ed,
+            #1453cf
+        );
+
+    color: white;
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    font-size: 17px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    box-shadow:
+
+        0 6px 0 #1743a0,
+
+        0 8px 12px
+        rgba(0, 0, 0, 0.25);
+
+    z-index: 5;
+
+    touch-action: manipulation;
+    user-select: none;
+
+    -webkit-tap-highlight-color: transparent;
+
+    transition:
+        transform 0.055s ease,
+        box-shadow 0.055s ease;
+}
+
+
+.ok-button:active,
+.ok-button.button-pressed {
+
+    transform:
+        translate(-50%, -50%)
+        translateY(4px);
+
+    box-shadow:
+
+        0 2px 0 #1743a0,
+
+        0 3px 5px
+        rgba(0, 0, 0, 0.20);
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 600px) {
+
+    .physical-controls {
+        margin-top: 14px;
+    }
+
+    .top-controls {
+        margin-bottom: 15px;
+    }
+
+    .physical-button {
+        width: 125px;
+        height: 50px;
+
+        font-size: 17px;
+    }
+
+    .dpad-container {
+        width: 250px;
+        height: 225px;
+
+        border-radius: 38px;
+    }
+
+    .dpad-container .nav-button {
+        width: 70px;
+        height: 60px;
+    }
+
+    .ok-button {
+        width: 70px;
+        height: 70px;
+
+        font-size: 16px;
+    }
+
+}
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+.phone-footer {
+
+    text-align: center;
+
+    margin-top: 15px;
+
+    color: #555;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 600px) {
+
+    body {
+
+        padding: 8px;
+
+    }
+
+
+    .phone {
+
+        width: 100%;
+
+        max-width: 500px;
+
+        padding: 14px;
+
+        border-radius: 30px;
+
+    }
+
+
+    .phone-brand {
+
+        font-size: 19px;
+
+        margin-bottom: 12px;
+
+    }
+
+
+    .lcd-frame {
+
+        padding: 7px;
+
+    }
+
+
+    .score {
+
+        font-size: 22px;
+
+    }
+
+
+    .phone-controls {
+
+        margin-top: 14px;
+
+    }
+
+    .mobile-pause-button,
+    .sound-button {
+
+        width: 68px;
+
+        height: 27px;
+
+    }
+
+}
+
+
+/* =====================================================
+   DESKTOP
+===================================================== */
+
+@media (min-width: 601px) {
+
+    .phone-controls {
+
+        margin-top: 18px;
+
+    }
+
+}
+/* =====================================================
+   UNIVERSAL BUTTON PRESS FEEDBACK
+   ===================================================== */
+
+.lcd-button,
+#shareButton {
+
+    user-select: none;
+
+    -webkit-tap-highlight-color: transparent;
+
+    transition:
+        transform 0.055s ease,
+        box-shadow 0.055s ease;
+}
+
+.lcd-button:active,
+.lcd-button.button-pressed {
+
+    transform:
+        translateY(3px)
+        scale(0.98);
+
+    box-shadow:
+        0 0 0 #393806;
+}
+
+#shareButton:active,
+#shareButton.button-pressed {
+
+    transform:
+        translateY(2px)
+        scale(0.92);
+}
+
+
+/* =====================================================
+   VIDEO-STYLE TOP SPEAKER GRILLE
+===================================================== */
+.phone-header {
+    position: relative;
+    width: 100%;
+    min-height: 70px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 20px;
+}
+
+/* Speaker centered ABOVE the name */
+.speaker-symbol {
+    position: static;
+
+    width: 96px;
+    height: 16px;
+
+    padding: 0 9px;
+
+    margin: 0 0 7px 0;
+
+    border-radius: 10px;
+
+    background: #292929;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    box-shadow:
+        inset 0 1px 1px rgba(255, 255, 255, 0.12),
+        0 1px 2px rgba(0, 0, 0, 0.30);
+
+    pointer-events: none;
+}
+
+/* Speaker holes */
+.speaker-symbol span {
+    width: 5px;
+    height: 5px;
+
+    border-radius: 50%;
+
+    background: #070707;
+}
+
+/* Name centered BELOW speaker */
+.phone-brand {
+    position: static;
+
+    margin: 0;
+
+    text-align: center;
+
+    font-family: Arial, sans-serif;
+    font-size: 25px;
+    font-weight: 900;
+    letter-spacing: 3px;
+
+    color: #161616;
+
+    text-shadow:
+        1px 1px 0 #aaa;
+}
+
+/* Share icon stays on right */
+#shareButton {
+    position: absolute;
+
+    right: 0;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    background: transparent;
+    border: none;
+
+    cursor: pointer;
+    padding: 5px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    outline: none;
+}
+
+/* =========================================================
+   FINAL RESPONSIVE / FULL VIEWPORT FIT
+========================================================= */
+
+html {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    width: 100%;
+    min-height: 100dvh;
+    height: 100dvh;
+    padding: 8px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.page {
+    width: 500px;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform-origin: center center;
+    flex: 0 0 auto;
+}
+
+.phone {
+    width: 500px;
+    max-width: 100%;
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 4px;
+    }
+
+    .page,
+    .phone {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+@media (max-height: 760px) {
+    .phone {
+        padding: 18px;
+        border-radius: 36px;
+    }
+
+    .phone-brand {
+        font-size: 22px;
+        margin-bottom: 12px;
+    }
+
+    .lcd-frame {
+        padding: 8px;
+    }
+
+    .physical-controls {
+        margin-top: 12px;
+    }
+
+    .top-controls {
+        margin-bottom: 10px;
+    }
+
+    .physical-button {
+        height: 48px;
+        width: 132px;
+        font-size: 17px;
+    }
+
+    .dpad-container {
+        width: 235px;
+        height: 205px;
+    }
+
+    .dpad-container .nav-button {
+        width: 64px;
+        height: 55px;
+    }
+
+    .ok-button {
+        width: 64px;
+        height: 64px;
+        font-size: 15px;
+    }
+
+    .phone-footer {
+        margin-top: 8px;
+    }
+}
+
+@media (max-height: 620px) {
+    .phone {
+        padding: 12px;
+        border-radius: 28px;
+    }
+
+    .phone-brand {
+        font-size: 18px;
+        margin-bottom: 8px;
+    }
+
+    .lcd-frame {
+        padding: 6px;
+    }
+
+    .physical-controls {
+        margin-top: 8px;
+    }
+
+    .top-controls {
+        margin-bottom: 7px;
+    }
+
+    .physical-button {
+        height: 40px;
+        width: 116px;
+        font-size: 14px;
+    }
+
+    .dpad-container {
+        width: 205px;
+        height: 178px;
+        border-radius: 30px;
+    }
+
+    .dpad-container .nav-button {
+        width: 56px;
+        height: 48px;
+        font-size: 16px;
+    }
+
+    .ok-button {
+        width: 56px;
+        height: 56px;
+        font-size: 13px;
+    }
+
+    .phone-footer {
+        display: none;
+    }
+}
+
+/* =====================================================
+   INSTALL APP POPUP
+   ===================================================== */
+
+.install-popup {
+    position: fixed;
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background: rgba(0, 0, 0, 0.65);
+
+    z-index: 9999;
+}
+
+.install-popup.hidden {
+    display: none !important;
+}
+
+
+/* Popup box */
+
+.install-box {
+    width: min(360px, 90vw);
+
+    padding: 24px;
+
+    text-align: center;
+
+    border-radius: 22px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #eeeeee,
+            #bcbcbc,
+            #dedede
+        );
+
+    border: 3px solid #555;
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.55),
+        inset 0 0 12px rgba(255, 255, 255, 0.7);
+}
+
+
+/* App icon */
+
+.install-icon {
+    width: 70px;
+    height: 70px;
+
+    margin: 0 auto 12px;
+
+    border-radius: 16px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 4px 10px rgba(0, 0, 0, 0.35);
+}
+
+.install-icon img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+}
+
+
+/* Title */
+
+.install-title {
+    font-family: Arial, sans-serif;
+
+    font-size: 23px;
+
+    font-weight: 900;
+
+    color: #161616;
+
+    margin-bottom: 10px;
+}
+
+
+/* Message */
+
+.install-message {
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+
+    color: #333;
+
+    margin-bottom: 20px;
+}
+
+
+/* Buttons */
+
+.install-actions {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 14px;
+}
+
+
+.install-actions button {
+    min-width: 105px;
+
+    height: 44px;
+
+    border-radius: 10px;
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size: 16px;
+
+    font-weight: 900;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.08s ease,
+        box-shadow 0.08s ease;
+}
+
+
+.install-yes {
+    border: 2px solid #1743a0;
+
+    background:
+        linear-gradient(
+            145deg,
+            #3678ed,
+            #1453cf
+        );
+
+    color: white;
+
+    box-shadow:
+        0 4px 0 #123583;
+}
+
+
+.install-no {
+    border: 2px solid #555;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #d5d5d5
+        );
+
+    color: #222;
+
+    box-shadow:
+        0 4px 0 #888;
+}
+
+
+.install-actions button:active {
+    transform: translateY(3px);
+
+    box-shadow:
+        0 1px 0 #555;
+}
+
+
+/* =====================================================
+   BOTTOM-RIGHT INSTALL BUTTON
+   ===================================================== */
+
+.install-app-button {
+    position: fixed;
+
+    right: 18px;
+    bottom: 18px;
+
+    width: 52px;
+    height: 52px;
+
+    border-radius: 50%;
+
+    border: 2px solid #1743a0;
+
+    background:
+        linear-gradient(
+            145deg,
+            #3678ed,
+            #1453cf
+        );
+
+    color: white;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    z-index: 9990;
+
+    box-shadow:
+        0 5px 0 #123583,
+        0 7px 15px rgba(0, 0, 0, 0.35);
+
+    transition:
+        transform 0.08s ease,
+        box-shadow 0.08s ease;
+}
+
+
+.install-app-button.hidden {
+    display: none !important;
+}
+
+
+.install-app-button:active {
+    transform: translateY(4px);
+
+    box-shadow:
+        0 1px 0 #123583,
+        0 3px 6px rgba(0, 0, 0, 0.25);
+}
+
+
+@media (max-width: 600px) {
+
+    .install-app-button {
+        right: 14px;
+        bottom: 14px;
+
+        width: 48px;
+        height: 48px;
+    }
+
+}

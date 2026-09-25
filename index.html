@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no"
+    >
+
+    <title>Mr.Nagesha</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+    <link
+        rel="manifest"
+        href="manifest.json"
+    >
+
+    <meta
+        name="theme-color"
+        content="#b7b51c"
+    >
+
+</head>
+
+<!-- INSTALL APP POPUP -->
+<div id="installPopup" class="install-popup hidden">
+
+    <div class="install-box">
+
+        <div class="install-icon">
+            <img src="icon-192.png" alt="MR.Nagesha">
+        </div>
+
+        <div class="install-title">
+            Install MR.Nagesha
+        </div>
+
+        <div class="install-message">
+            Install the game as an app for quick offline access.
+        </div>
+
+        <div class="install-actions">
+
+            <button id="installYesButton" class="install-yes">
+                YES
+            </button>
+
+            <button id="installNoButton" class="install-no">
+                NO
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- BOTTOM-RIGHT INSTALL BUTTON -->
+<button
+    id="installAppButton"
+    class="install-app-button hidden"
+    type="button"
+    aria-label="Install MR.Nagesha"
+    title="Install MR.Nagesha"
+>
+    <svg
+        width="26"
+        height="26"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+    >
+        <path
+            d="M12 3V15"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+        />
+
+        <path
+            d="M7 10L12 15L17 10"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+        />
+
+        <path
+            d="M5 20H19"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+        />
+    </svg>
+</button>
+
+<body>
+
+<div class="page">
+
+    <div class="phone">
+
+        <!-- PHONE HEADER -->
+        <div class="phone-header" style="position: relative; display: flex; justify-content: center; align-items: center; margin-bottom: 20px; width: 100%;">
+            
+            <!-- TOP SPEAKER SYMBOL -->
+            <div class="speaker-symbol" aria-hidden="true">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <!-- PHONE BRAND -->
+            <div class="phone-brand" style="margin-bottom: 0; font-family: Arial, sans-serif; font-size: 25px; font-weight: 900; letter-spacing: 3px; color: #161616; text-shadow: 1px 1px 0 #aaa;">
+                Mr. NAGESHA
+            </div>
+
+            <!-- SHARE BUTTON -->
+            <button id="shareButton" type="button" style="position: absolute; right: 0; background: transparent; border: none; cursor: pointer; padding: 5px; display: flex; align-items: center; justify-content: center; outline: none;" aria-label="Share Game">
+                <svg width="28" height="28" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" style="filter: drop-shadow(1px 1px 0px #aaa);">
+                    <line x1="18" y1="32" x2="46" y2="16" stroke="#161616" stroke-width="7" stroke-linecap="round" />
+                    <line x1="18" y1="32" x2="46" y2="48" stroke="#161616" stroke-width="7" stroke-linecap="round" />
+                    <circle cx="14" cy="32" r="10" fill="#161616" />
+                    <circle cx="50" cy="13" r="10" fill="#161616" />
+                    <circle cx="50" cy="51" r="10" fill="#161616" />
+                </svg>
+            </button>
+
+        </div>
+
+        <!-- LCD -->
+        <div class="lcd-frame">
+
+            <div class="lcd-screen">
+
+                <!-- TOP STATUS -->
+
+                <div class="hud">
+
+                    <div
+                        id="score"
+                        class="score"
+                    >
+                        0000
+                    </div>
+
+                    <div
+                        id="level"
+                        class="level"
+                    >
+                        LV 01
+                    </div>
+
+                </div>
+
+
+                <!-- GAME -->
+
+                <canvas
+                    id="gameCanvas"
+                    width="400"
+                    height="280"
+                ></canvas>
+
+
+                <!-- BOTTOM STATUS -->
+
+                <div class="lcd-bottom">
+
+                    <div
+                        id="foodCounter"
+                        class="food-counter"
+                    >
+                        0/5
+                    </div>
+
+
+                    <div class="timer-container">
+
+                        <div
+                            id="timerBar"
+                            class="timer-bar"
+                        ></div>
+
+                    </div>
+
+
+                    <div
+                        id="timerText"
+                        class="timer-text"
+                    >
+                        —
+                    </div>
+
+                </div>
+
+
+                <!-- START SCREEN -->
+
+                <div
+                    id="startScreen"
+                    class="screen-overlay"
+                >
+
+                    <div class="retro-title">
+                        Mr.Nagesha
+                    </div>
+
+                    <div class="retro-subtitle">
+                        Eat, grow, repeat.....
+                    </div>
+
+                    <div class="start-hint">
+                        PRESS SPACE TO START
+                    </div>
+
+                    <button
+                        id="startButton"
+                        class="lcd-button"
+                    >
+                        START
+                    </button>
+
+                </div>
+
+
+                <!-- PAUSE SCREEN -->
+
+                <div
+                    id="pauseScreen"
+                    class="screen-overlay hidden"
+                >
+
+                    <div class="retro-title">
+                        PAUSED
+                    </div>
+
+                    <div class="pause-hint">
+                        PRESS SPACE
+                    </div>
+
+                </div>
+
+
+
+                <!-- GAME OVER -->
+
+                <div
+                    id="gameOverScreen"
+                    class="screen-overlay hidden"
+                >
+
+                    <div class="retro-title">
+                        GAME OVER
+                    </div>
+
+
+                    <div class="game-result">
+                        SCORE:
+                        <span id="finalScore">
+                            0000
+                        </span>
+                    </div>
+
+
+                    <div class="game-result">
+                        HIGH:
+                        <span id="finalHigh">
+                            0000
+                        </span>
+                    </div>
+
+
+                    <button
+                        id="restartButton"
+                        class="lcd-button"
+                    >
+                        AGAIN
+                    </button>
+
+
+                    <div class="restart-hint">
+                        PRESS SPACE
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+       <!-- PHYSICAL CONTROLS -->
+
+<div class="physical-controls">
+
+    <!-- TOP BUTTONS -->
+
+    <div class="top-controls">
+
+        <button
+            id="mobilePauseButton"
+            class="physical-button start-control"
+            type="button"
+        >
+            START
+        </button>
+
+        <button
+            id="soundButton"
+            class="physical-button mute-control"
+            type="button"
+            aria-label="Mute sound"
+        >
+            MUTE
+        </button>
+
+    </div>
+
+
+    <!-- D-PAD -->
+
+    <div class="dpad-container">
+
+        <button
+            class="nav-button dpad-up"
+            data-direction="up"
+            aria-label="Up"
+            type="button"
+        >
+            ▲
+        </button>
+
+
+        <button
+            class="nav-button dpad-left"
+            data-direction="left"
+            aria-label="Left"
+            type="button"
+        >
+            ◀
+        </button>
+
+
+        <!-- OK BUTTON -->
+
+        <button
+            id="okButton"
+            class="ok-button"
+            type="button"
+            aria-label="OK"
+        >
+            OK
+        </button>
+
+
+        <button
+            class="nav-button dpad-right"
+            data-direction="right"
+            aria-label="Right"
+            type="button"
+        >
+            ▶
+        </button>
+
+
+        <button
+            class="nav-button dpad-down"
+            data-direction="down"
+            aria-label="Down"
+            type="button"
+        >
+            ▼
+        </button>
+
+    </div>
+
+</div>
+        <div class="phone-footer">
+            CLASSIC MOBILE GAME
+        </div>
+
+    </div>
+
+</div>
+
+
+<script src="game.js"></script>
+<script>
+
+    if ("serviceWorker" in navigator) {
+
+        window.addEventListener("load", () => {
+
+            navigator.serviceWorker
+                .register("./service-worker.js")
+                .then(registration => {
+
+                    console.log(
+                        "Mr.Nagesha service worker registered:",
+                        registration.scope
+                    );
+
+                })
+                .catch(error => {
+
+                    console.error(
+                        "Service worker registration failed:",
+                        error
+                    );
+
+                });
+
+        });
+
+    }
+
+</script>
+
+</body>
+</html>
